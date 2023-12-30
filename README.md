@@ -1,4 +1,4 @@
-#### Sample event booking graphl-server using express-grphql library
+#### Sample event booking graphl-server using express-graphql library
 
 ##### Features
 - User signup with password encryption and authentication using jwt tokens
