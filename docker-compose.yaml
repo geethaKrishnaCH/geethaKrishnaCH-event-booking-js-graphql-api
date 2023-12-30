@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  mongo-server:
+    container_name: booking-mongo-server
+    image: mongo:4.4.26
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: easylearnz
+      MONGO_INITDB_ROOT_PASSWORD: easylearnz
+    volumes:
+      - bookingDB:/data/db
+  mongo-express:
+    container_name: booking-mongo-express
+    image: mongo-express:1.0.0-18-alpine3.18
+    depends_on:
+      - mongo-server
+    ports:
+      - 8082:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: easylearnz
+      ME_CONFIG_MONGODB_ADMINPASSWORD: easylearnz
+      ME_CONFIG_MONGODB_URL: mongodb://easylearnz:easylearnz@mongo-server:27017/
+
+volumes:
+  bookingDB:
